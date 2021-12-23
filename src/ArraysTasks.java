@@ -8,14 +8,19 @@ public class ArraysTasks {
         System.out.println("___________________________");
         System.out.println(hasSimilar(new int[] {10, 1, 10}));
         System.out.println("___________________________");
-        System.out.println(mean(new int[] {10, 1, 10}));
+        System.out.println(mean(new int[] {10, 3, 10}));
         System.out.println("___________________________");
-        /*
         int[] m = {10, 20, 30, 40};
+        int[] m1 = {10};
         shift(m);
-        System.out.println(m);
+        shift(m1);
+        System.out.println(Arrays.toString(m));
+        System.out.println(Arrays.toString(m1));
+        System.out.println("___________________________");
+        int[] m2 = {10, 20, 30, 40};
+        System.out.println(Arrays.toString(copyShift(m2)));
+        System.out.println(Arrays.toString(m2));
 
-         */
     }
 
     private static int[] even(int n){
@@ -26,9 +31,9 @@ public class ArraysTasks {
     }
 
     private static boolean allSimilar(int[] a){
-            for (int x : a)
-                if (a[0] != x)
-                    return false;
+        for (int x : a)
+            if (a[0] != x)
+                return false;
         return true;
     }
 
@@ -41,16 +46,35 @@ public class ArraysTasks {
     }
 
     private static double mean(int[] a){
-        int sum = 0;
+        double sum = 0;
         for (int x : a)
             sum = sum + x;
         return sum / a.length;
     }
 
-    /*
-    private static void shift(int[] a){
 
+    private static void shift(int[] a){
+        int p, t;
+        t = a[0];
+        for (int i = 0; i < a.length; i++ ){
+            p = a[i];
+            a[i] = t;
+            t = p;
+        }
+        a[0] = t;
     }
 
-     */
+    private static int[] copyShift(int[] a){
+        int p, t;
+        int[] b = a.clone();
+        t = b[0];
+        for (int i = 0; i < b.length; i++ ){
+            p = b[i];
+            b[i] = t;
+            t = p;
+        }
+        b[0] = t;
+        return b;
+    }
+
 }
